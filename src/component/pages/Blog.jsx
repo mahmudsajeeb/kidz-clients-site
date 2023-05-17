@@ -1,11 +1,11 @@
 import React from 'react'
 import useTitle from '../../hook/UseTitle'
 
-function Home() {
-  useTitle('home')
+function Blog() {
+  useTitle("blog")
   return (
-    <div>Home</div>
+    <div>Blog</div>
   )
 }
 
-export default Home
+export default Blog

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 function Header() {
   return (
@@ -21,12 +21,44 @@ function Header() {
     
      
   </div>
-  <div className="navbar-center hidden lg:flex">
+  {/* <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
       <li><a>Home</a></li> 
       <li><a>About</a></li>
     </ul>
-  </div>
+  </div> */}
+
+  <div className="navbar-center   lg:flex">
+          <ul className=" m-6 font-semibold flex px-1">
+            <li>  
+            <NavLink
+                    to='/'
+                    className={({ isActive, isPending }) =>
+                      isActive
+                        ? "text-orange-600"
+                        : isPending
+                        ? "pending"
+                        : ""
+                    }
+                  >
+                    Home
+                  </NavLink>
+            </li>
+            <li  className='ml-4'>
+            <NavLink
+              to='/blog'
+              aria-label='blog'
+              title='blog'
+              className={({ isActive }) => (isActive ? 'text-orange-600' : 'default')}
+            >
+              Blog
+            </NavLink>
+            </li>
+          
+            
+
+          </ul>
+        </div>
   <div className="navbar-end "> 
     {/* {
       user?.email ?  <Link onClick={handleLogOut} className='btn'  to="/">LogOut</Link> :  <Link className='btn'  to="/login">Login</Link>
