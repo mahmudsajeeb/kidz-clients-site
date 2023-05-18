@@ -1,10 +1,32 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProviders';
 
 function SignIn() {
+  const {user,createUser} = useContext(AuthContext)
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add your registration logic here
+ 
+    e.preventDefault()
+     
+    const form = e.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value; 
+    const password = form.password.value;
+    form.reset()
+    
+     createUser(email, password)
+      .then(result => {
+        const createUser = result.user
+        const photoURL = user.photoURL;
+        console.log(createUser,photoURL)
+         
+      })
+      .catch(error => {
+          console.log(error.message)
+      
+      })
+      console.log(name,photo,email,password) 
   };
   return (
     <div className='grid lg:grid-cols-2'>
@@ -19,7 +41,7 @@ function SignIn() {
         className="bg-white shadow-md rounded px-16 pt-16 pb-16 mb-8 max-w-xl w-full"
         onSubmit={handleSubmit}
       >
-        <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">Sign In</h2>
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -33,6 +55,7 @@ function SignIn() {
             type="text"
             placeholder="Name"
             required
+            name='name'
           />
         </div>
         <div className="mb-4">
@@ -48,6 +71,7 @@ function SignIn() {
             type="email"
             placeholder="Email"
             required
+            name='email'
           />
         </div>
         <div className="mb-4">
@@ -63,6 +87,23 @@ function SignIn() {
             type="password"
             placeholder="Password"
             required
+            name='password'
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="photo"
+          >
+            Photo URL
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="photo"
+            type="url"
+            placeholder="Photo URL"
+            required
+            name='photo'
           />
         </div>
         <div className="flex items-center justify-center">
