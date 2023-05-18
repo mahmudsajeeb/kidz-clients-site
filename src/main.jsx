@@ -8,11 +8,11 @@ import {
 import { router } from './router/Router';
 import AuthProviders from './providers/AuthProviders';
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <div className="max-w-7xl mx-auto">
+  // <div className="max-w-7xl mx-auto">
     <React.StrictMode>
     <AuthProviders>
     <RouterProvider router={router} />
     </AuthProviders>
   </React.StrictMode>,
-  </div>
+  // </div>
 )

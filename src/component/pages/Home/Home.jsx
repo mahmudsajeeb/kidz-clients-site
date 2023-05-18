@@ -2,6 +2,7 @@ import React from 'react'
 import useTitle from '../../../hook/UseTitle'
 import Banner from './Banner' 
 import ImagesGallery from './ImagesGallery'
+import Product from './Product'
 
 
 function Home() {
@@ -9,6 +10,7 @@ function Home() {
   return (
     <div>
     <Banner />
+    <Product />
      <ImagesGallery />
      
     </div>
