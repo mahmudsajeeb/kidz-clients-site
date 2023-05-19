@@ -120,6 +120,7 @@ function SignIn() {
         <p><span>If you have already Account?</span><Link to='/login'><span className='underline font-semibold'>Login</span></Link></p>
       </form>
     </div>
+    
     </div>
   )
 }

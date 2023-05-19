@@ -96,7 +96,7 @@ function ImagesGallery() {
     <div className='text-center mt-11'> 
     <h1 className='text-4xl font-semibold  text-orange-600'>Kidz Toy Gallery</h1>
     <div className='mx-auto flex justify-center'>
-    <hr class="w-48 mb-7 mt-2 font-semibold border-t-2 border-orange-600  "></hr>
+    <hr className="w-48 mb-7 mt-2 font-semibold border-t-2 border-orange-600  "></hr>
     </div>
     <Gallery images={images} />
 

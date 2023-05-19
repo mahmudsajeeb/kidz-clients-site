@@ -7,11 +7,13 @@ import Login from "../component/Login/Login";
 import AddToy from "../component/pages/AddToy/AddToy";
 import MyToys from "../component/pages/MyToys/MyToys";
 import AllToys from "../component/pages/All Toys/AllToys";
+import ErrorPage from "../component/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path:"/",
     element:<Main />,
+    errorElement:<ErrorPage />,
     children:[
       {
         path:"/",

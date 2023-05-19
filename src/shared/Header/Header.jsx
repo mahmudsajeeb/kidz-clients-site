@@ -24,7 +24,7 @@ function Header() {
         <li><a>Login</a></li>
       </ul>
     </div>
-    <Link to="/" className="btn btn-ghost normal-case font-semibold text-4xl text-orange-600"><img src="https://i.ibb.co/jZQsXNK/Screenshot-5-removebg-preview.png" alt="" /> </Link>
+    <Link to="/" ><img className='w-40' src="https://i.ibb.co/jZQsXNK/Screenshot-5-removebg-preview.png" alt="" /> </Link>
     
      
   </div>
