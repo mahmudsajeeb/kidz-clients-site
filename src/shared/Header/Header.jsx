@@ -24,7 +24,7 @@ function Header() {
         <li><a>Login</a></li>
       </ul>
     </div>
-    <Link to="/"  ><img src="https://i.ibb.co/jZQsXNK/Screenshot-5-removebg-preview.png" alt="" /> </Link>
+    <Link to="/" className="btn btn-ghost normal-case font-semibold text-4xl text-orange-600"><img src="https://i.ibb.co/jZQsXNK/Screenshot-5-removebg-preview.png" alt="" /> </Link>
     
      
   </div>
@@ -53,6 +53,16 @@ function Header() {
             </li>
             <li  className='ml-4'>
             <NavLink
+              to='/alltoys'
+              aria-label='alltoys'
+              title='alltoys'
+              className={({ isActive }) => (isActive ? 'text-orange-600' : 'default')}
+            >
+              All Toys
+            </NavLink>
+            </li>
+            <li  className='ml-4'>
+            <NavLink
               to='/blog'
               aria-label='blog'
               title='blog'
@@ -69,13 +79,37 @@ function Header() {
   <div className="navbar-end "> 
      
     {
-      user?.email ?  <Link onClick={handleLogOut} className='btn'  to="/">LogOut</Link> :  <Link className='btn'  to="/login">Login</Link>
+      user?.email ? <>
+      <p className='mr-2 hidden md:inline-block text-xl   '>
+            <NavLink
+              to='/mytoys'
+              aria-label='mytoys'
+              title='mytoys'
+              className={({ isActive }) => (isActive ? 'text-orange-600' : 'default')}
+            >
+              My Toys
+            </NavLink>
+            </p>
+          <p className='hidden md:inline-block mr-2 text-xl  '>
+            <NavLink
+              to='/addtoy'
+              aria-label='addtoy'
+              title='addtoy'
+              className={({ isActive }) => (isActive ? 'text-orange-600' : 'default')}
+            >
+              Add a Toy
+            </NavLink>
+            </p>
+          
+      <Link onClick={handleLogOut} className='btn'  to="/">LogOut</Link>
+      </> :  <Link className='btn'  to="/login">Login</Link>
     }
   </div>
   <div>
         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
          {user &&  <img src={user.photoURL} />}
+         {/* {user?.email && `<p>hover:${user.name}</p>`} */}
         </div>
       </label>
         </div>

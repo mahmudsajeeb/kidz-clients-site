@@ -4,6 +4,9 @@ import Blog from "../component/pages/Blog";
 import Home from "../component/pages/Home/Home";
 import SignIn from "../component/SignIn/SignIn";
 import Login from "../component/Login/Login";
+import AddToy from "../component/pages/AddToy/AddToy";
+import MyToys from "../component/pages/MyToys/MyToys";
+import AllToys from "../component/pages/All Toys/AllToys";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +20,18 @@ export const router = createBrowserRouter([
       {
         path:"blog",
         element:<Blog />
+      },
+      {
+        path:"alltoys",
+        element:<AllToys />
+      },
+      {
+        path:"addtoy",
+        element:<AddToy />
+      },
+      {
+        path:"mytoys",
+        element:<MyToys />
       },
       {
         path:"signin",

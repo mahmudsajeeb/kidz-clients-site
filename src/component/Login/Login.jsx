@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
+import useTitle from '../../hook/UseTitle';
 
 function Login() {
-
+useTitle("Login")
   const {user,signIn,signInGoogle} =useContext(AuthContext)
 
  

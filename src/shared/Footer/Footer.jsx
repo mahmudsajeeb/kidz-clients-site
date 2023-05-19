@@ -8,7 +8,7 @@ function Footer() {
   <div>
   <Link to="/" className="btn btn-ghost normal-case font-semibold text-4xl text-orange-600">Kidz </Link>
   
-    <p>Kidz Industries Ltd.<br/>Providing reliable Products since 2002</p>
+  <p className='text-center  '>Copyright © 20223 All rights reserved. Powered by Kidz.</p>
   </div> 
   <div>
     <span className="footer-title">Services</span> 
@@ -19,16 +19,21 @@ function Footer() {
     <a className="link link-hover">Toy Cars</a>
   </div> 
   <div>
-    <span className="footer-title">Company</span> 
-    <a className="link link-hover">About us</a> 
-    <a className="link link-hover">Contact</a> 
+   
+    <p className="text-xl">Social Media</p> 
+    <a className="link link-hover">Facebook</a> 
+    <a className="link link-hover">Linkedin</a> 
+    <a className="link link-hover">Twitter</a> 
     
   </div> 
   <div>
-    <span className="footer-title">Legal</span> 
-    <a className="link link-hover">Terms of use</a> 
-    <a className="link link-hover">Privacy policy</a> 
-    <a className="link link-hover">Cookie policy</a>
+  <span className="footer-title">Contact Us</span> 
+    <p>Email: saifurrahmansajib37@gmail.com</p>
+    <p>Phone Number: 01928489393</p>
+  </div>
+  <div>
+  <span className="footer-title">Address</span> 
+    <a className="link link-hover">Road-4,House-33,Sector-11.Uttara,Dhaka</a> 
   </div>
 </footer>
     

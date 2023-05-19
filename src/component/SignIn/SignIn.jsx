@@ -1,8 +1,10 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
+import useTitle from '../../hook/UseTitle';
 
 function SignIn() {
+  useTitle("Sign In")
   const {user,createUser} = useContext(AuthContext)
   const handleSubmit = (e) => {
  
