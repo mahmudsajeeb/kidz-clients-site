@@ -13,7 +13,7 @@ function AllToys() {
 
   },[])
   return (
-    <div>
+    <div className='max-w-7xl mx-auto'>
     
     <div >
   <table className="table table-compact w-full">
