@@ -1,180 +1,92 @@
- 
-import React, { useContext, useState } from 'react';
-// import Select from 'react-select';
-import Swal from 'sweetalert2'    
-import { useForm } from "react-hook-form";
-import { AuthContext } from '../../../providers/AuthProviders';
- 
+ import React from 'react'
+import { useLoaderData } from 'react-router-dom'
+import Swal from 'sweetalert2' 
+ function UpdateToys() {
+  const toysLoader = useLoaderData()
+  console.log(toysLoader)
 
-function UpdateToys() {
-  const [selectedOption, setSelectedOption] = useState(null);
-  const {user} = useContext(AuthContext)
-  const { register, handleSubmit } = useForm();
+  const handleUpdate = (e) =>{
+      e.preventDefault()
+      const form = e.target 
+      const price = form.price.value
+      const availableQuantity = form.availableQuantity.value 
+      const description = form.description.value 
+      const updatedToy = {price,availableQuantity,description}
+     
 
-  const onSubmit = (data) => {
-   
-    fetch(`http://localhost:1000/updateToy/${data._id}`,{
-      method:"PUT",
-      headers:{'content-type':'application/json'},
-      body:JSON.stringify(data)
-    })
-    .then(res =>res.json())
-    .then(data =>{console.log(data)
-    
-      // if(data.insertedId){
-      //   Swal.fire({
-      //     title: 'success',
-      //     text: 'You are Successfully add toy',
-      //     icon: 'success',
-      //     confirmButtonText: 'Ok'
-      //   })
-      // }
-    
-    })
-    console.log(data)
-  }
+      fetch(`http://localhost:1000/alltoys/${toysLoader._id}`,{
+        method:"PUT",
+        headers:{
+          'content-type':'application/json'
+        },
+        body:JSON.stringify(updatedToy)
+      })
+      .then(res =>res.json())
+      .then(data => {
+          console.log(data)
 
-  const options = [
-    { value: 'Musical Toy', label: 'Musical Toy' },
-    { value: 'Toy Car', label: 'Toy Car' },
-    { value: 'Video Games Toy', label: 'Video Games Toy' },
-  ];
-  return (
-    <div>
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg mx-auto">
-      {/* <div className="mb-4">
-        <label htmlFor="pictureUrl" className="block mb-2 font-medium">
-          Picture URL
-        </label>
-        <input
-          type="text"
-          id="pictureUrl"
-          {...register('pictureUrl')}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div> */}
-
-      {/* <div className="mb-4">
-        <label htmlFor="name" className="block mb-2 font-medium">
-        Seller Name
-        </label>
-        <input
-          type="text"
-          id="name"
-          {...register('name')}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div> */}
-
-      <div className="mb-4">
-        <label htmlFor="toyName" className="block mb-2 font-medium">
-          Toy Name
-        </label>
-        <input
-          type="text"
-          id="toyName"
-          
-          {...register('toyName')}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
-
-      <div className='mb-4'>
-      <input type="text"
-            className=" hidden"
-            {...register("_id")}
+          if(data.modifiedCount > 0){
+            Swal.fire({
+              title: 'success',
+              text: 'Toy Updated Successfully',
+              icon: 'success',
+              confirmButtonText: 'Ok'
+            })
              
+          }
+      })
+  }
+   return (
+     <div>
+       <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4 text-center">Update My Toy Information</h1>
+      <form onSubmit={handleUpdate} className="max-w-md mx-auto">
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price">
+            Price
+          </label>
+          <input
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="price"
+            type="number"
+             defaultValue={toysLoader?.price}
           />
-      </div>
-
-      {/* <div className="mb-4">
-        <label htmlFor="sellerEmail" className="block mb-2 font-medium">
-          Seller Email
-        </label>
-        <input
-         value={user?.email}
-          type="email"
-          id="sellerEmail"
-          {...register('sellerEmail')}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-          
-        />
-      </div> */}
-
-      {/* <div className="mb-4">
-        <label htmlFor="subCategory" className="block mb-2 font-medium">
-          Sub-category
-        </label>
-        <select
-          id="subCategory"
-          {...register('subCategory')}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-        >
-          <option value='Musical Toy'>Musical Toy</option>
-          <option value="Toy Car">Toy Car</option>
-          <option value="Video Games Toy">Musical Toy</option>
-          
-           
-        </select>
- 
-      </div> */}
-
-      <div className="mb-4">
-        <label htmlFor="price" className="block mb-2 font-medium">
-          Price
-        </label>
-        <input
-          type="number"
-          id="price"
-          {...register('price')}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
-
-      {/* <div className="mb-4">
-        <label htmlFor="rating" className="block mb-2 font-medium">
-          Rating
-        </label>
-        <input
-          type="number"
-          id="rating"
-          {...register('rating')}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div> */}
-
-      {/* <div className="mb-4">
-        <label htmlFor="availableQuantity" className="block mb-2 font-medium">
-          Available Quantity
-        </label>
-        <input
-          type="number"
-          id="availableQuantity"
-          {...register('availableQuantity')}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div> */}
-
-      {/* <div className="mb-4">
-        <label htmlFor="description" className="block mb-2 font-medium">
-          Detail Description
-        </label>
-        <textarea
-          id="description"
-          {...register('description')}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-        ></textarea>
-      </div> */}
-
-      <button
-        type="submit"
-        className="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
-      >
-        Update
-      </button>
-    </form>
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="quantity">
+            Quantity
+          </label>
+          <input
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="availableQuantity"
+            type="number"
+             defaultValue={toysLoader?.availableQuantity}
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+            Description
+          </label>
+          <textarea
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="description"
+          defaultValue={toysLoader?.description}
+          />
+        </div>
+        <div className="flex justify-end">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
+            Update
+          </button>
+        </div>
+      </form>
     </div>
-  )
-}
 
-export default UpdateToys
+     
+     </div>
+   )
+ }
+ 
+ export default UpdateToys

@@ -36,6 +36,8 @@ function MyToys() {
         })
     }
 }
+
+
   return (
     <div className='max-w-7xl mx-auto'>
 
@@ -58,7 +60,7 @@ function MyToys() {
       
       
     {
-        mytoys.map(mytoy => <MytoysRow key={mytoy._id} toysDelete={toysDelete}   mytoy={mytoy} />)
+        mytoys.map(mytoy => <MytoysRow key={mytoy._id}   toysDelete={toysDelete}   mytoy={mytoy} />)
       }
       
     </tbody> 
