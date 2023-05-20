@@ -30,7 +30,8 @@ function MyToys() {
         </th> 
         <th>Price</th> 
         <th>Available Quantity</th> 
-        <th>Details</th> 
+        <th>Update</th> 
+        <th>Action</th> 
          
       </tr>
     </thead> 

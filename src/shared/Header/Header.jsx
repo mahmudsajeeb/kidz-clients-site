@@ -18,11 +18,45 @@ function Header() {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-        <li><a>Home</a></li>
-         
-        <li><a>About</a></li>
-        <li><a>Login</a></li>
+      <li>  
+            <NavLink
+                    to='/'
+                    className={({ isActive, isPending }) =>
+                      isActive
+                        ? "text-orange-600"
+                        : isPending
+                        ? "pending"
+                        : ""
+                    }
+                  >
+                    Home
+                  </NavLink>
+            </li>
+            <li  className='ml-4'>
+            <NavLink
+              to='/alltoys'
+              aria-label='alltoys'
+              title='alltoys'
+              className={({ isActive }) => (isActive ? 'text-orange-600' : 'default')}
+            >
+              All Toys
+            </NavLink>
+            </li>
+            <li  className='ml-4'>
+            <NavLink
+              to='/blog'
+              aria-label='blog'
+              title='blog'
+              className={({ isActive }) => (isActive ? 'text-orange-600' : 'default')}
+            >
+              Blog
+            </NavLink>
+            </li>
+          
+          
+
       </ul>
+  
     </div>
     <Link to="/" ><img className='w-40' src="https://i.ibb.co/jZQsXNK/Screenshot-5-removebg-preview.png" alt="" /> </Link>
     

@@ -5,6 +5,7 @@ import AllToysRow from './AllToysRow'
 function AllToys() {
   useTitle("All Toys")
   const [allToys,setToys] = useState([])
+  const [searchText,setSearchText] = useState('')
 
   useEffect(()=>{
     fetch('http://localhost:1000/alltoys')
@@ -12,9 +13,28 @@ function AllToys() {
     .then(data =>setToys(data))
 
   },[])
+
+  const handleSearch = () => {
+    fetch(`http://localhost:1000/getToysByText/${searchText}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setToys(data);
+      });
+  };
   return (
     <div className='max-w-7xl mx-auto'>
-    
+    <div className="flex mb-6 justify-center">
+      <input
+        type="text"
+        placeholder="Search"
+        onChange={(e) => setSearchText(e.target.value)}
+        className="border w-80 border-gray-300 rounded-l py-2 px-4 outline-none"
+      />{""}
+      <button onClick={handleSearch} className="bg-blue-500 text-white rounded-r py-2 px-4 ml-1">
+        Search
+      </button>
+    </div>
     <div >
   <table className="table table-compact w-full">
     <thead>

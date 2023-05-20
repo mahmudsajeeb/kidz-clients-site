@@ -14,7 +14,8 @@ function MytoysRow({mytoy}) {
         <td>{price}</td> 
         <td>{availableQuantity}</td> 
           
-        <button className='btn mt-1 mb-1'>View Details</button>
+        <td><button className='btn mt-1 mb-1 mr-2'>Update</button></td>
+        <td><button className='btn mt-1 mb-1'>Delete</button></td>
         
       </tr>
     
