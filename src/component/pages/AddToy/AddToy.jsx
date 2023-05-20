@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 // import Select from 'react-select';
 import Swal from 'sweetalert2'   
 import useTitle from '../../../hook/UseTitle'
 import { useForm } from "react-hook-form";
+import { AuthContext } from '../../../providers/AuthProviders';
 
 function AddToy() {
   useTitle("Add Toys")
   const [selectedOption, setSelectedOption] = useState(null);
-
+  const {user} = useContext(AuthContext)
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
-    fetch('http://localhost:1000/alltoys',{
+    fetch('http://localhost:1000/allposttoys',{
       method:"POST",
       headers:{'content-type':'application/json'},
       body:JSON.stringify(data)
@@ -81,10 +82,12 @@ function AddToy() {
           Seller Email
         </label>
         <input
+         value={user?.email}
           type="email"
           id="sellerEmail"
           {...register('sellerEmail')}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          
         />
       </div>
 

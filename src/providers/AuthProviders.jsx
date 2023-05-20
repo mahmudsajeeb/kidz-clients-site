@@ -5,7 +5,7 @@ const googleProvider = new GoogleAuthProvider();
 export const AuthContext = createContext()
 const auth = getAuth(app);
 function AuthProviders({children}) {
-  const [user,setUser] = useState(null)
+  const [user,setUser] = useState( )
   const [loading,setLoading] = useState(true)
   // const [photoURL, setPhotoURL] = useState('');
   // const [photoFile, setPhotoFile] = useState(null);
