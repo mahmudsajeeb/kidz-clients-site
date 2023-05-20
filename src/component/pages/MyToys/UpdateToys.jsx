@@ -1,36 +1,37 @@
+ 
 import React, { useContext, useState } from 'react';
 // import Select from 'react-select';
-import Swal from 'sweetalert2'   
-import useTitle from '../../../hook/UseTitle'
+import Swal from 'sweetalert2'    
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../../providers/AuthProviders';
+ 
 
-function AddToy() {
-  useTitle("Add Toys")
+function UpdateToys() {
   const [selectedOption, setSelectedOption] = useState(null);
   const {user} = useContext(AuthContext)
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-    fetch('http://localhost:1000/allposttoys',{
-      method:"POST",
+   
+    fetch(`http://localhost:1000/updateToy/${data._id}`,{
+      method:"PUT",
       headers:{'content-type':'application/json'},
       body:JSON.stringify(data)
     })
     .then(res =>res.json())
     .then(data =>{console.log(data)
     
-      if(data.insertedId){
-        Swal.fire({
-          title: 'success',
-          text: 'You are Successfully add toy',
-          icon: 'success',
-          confirmButtonText: 'Ok'
-        })
-      }
+      // if(data.insertedId){
+      //   Swal.fire({
+      //     title: 'success',
+      //     text: 'You are Successfully add toy',
+      //     icon: 'success',
+      //     confirmButtonText: 'Ok'
+      //   })
+      // }
     
     })
+    console.log(data)
   }
 
   const options = [
@@ -39,9 +40,9 @@ function AddToy() {
     { value: 'Video Games Toy', label: 'Video Games Toy' },
   ];
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg mx-auto">
-      <div className="mb-4">
+    <div>
+    <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg mx-auto">
+      {/* <div className="mb-4">
         <label htmlFor="pictureUrl" className="block mb-2 font-medium">
           Picture URL
         </label>
@@ -51,9 +52,9 @@ function AddToy() {
           {...register('pictureUrl')}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
         />
-      </div>
+      </div> */}
 
-      <div className="mb-4">
+      {/* <div className="mb-4">
         <label htmlFor="name" className="block mb-2 font-medium">
         Seller Name
         </label>
@@ -63,7 +64,7 @@ function AddToy() {
           {...register('name')}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
         />
-      </div>
+      </div> */}
 
       <div className="mb-4">
         <label htmlFor="toyName" className="block mb-2 font-medium">
@@ -72,12 +73,21 @@ function AddToy() {
         <input
           type="text"
           id="toyName"
+          
           {...register('toyName')}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
 
-      <div className="mb-4">
+      <div className='mb-4'>
+      <input type="text"
+            className=" hidden"
+            {...register("_id")}
+             
+          />
+      </div>
+
+      {/* <div className="mb-4">
         <label htmlFor="sellerEmail" className="block mb-2 font-medium">
           Seller Email
         </label>
@@ -89,9 +99,9 @@ function AddToy() {
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           
         />
-      </div>
+      </div> */}
 
-      <div className="mb-4">
+      {/* <div className="mb-4">
         <label htmlFor="subCategory" className="block mb-2 font-medium">
           Sub-category
         </label>
@@ -104,10 +114,10 @@ function AddToy() {
           <option value="Toy Car">Toy Car</option>
           <option value="Video Games Toy">Musical Toy</option>
           
-          {/* Add more options as needed */}
+           
         </select>
  
-      </div>
+      </div> */}
 
       <div className="mb-4">
         <label htmlFor="price" className="block mb-2 font-medium">
@@ -121,7 +131,7 @@ function AddToy() {
         />
       </div>
 
-      <div className="mb-4">
+      {/* <div className="mb-4">
         <label htmlFor="rating" className="block mb-2 font-medium">
           Rating
         </label>
@@ -131,9 +141,9 @@ function AddToy() {
           {...register('rating')}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
         />
-      </div>
+      </div> */}
 
-      <div className="mb-4">
+      {/* <div className="mb-4">
         <label htmlFor="availableQuantity" className="block mb-2 font-medium">
           Available Quantity
         </label>
@@ -143,9 +153,9 @@ function AddToy() {
           {...register('availableQuantity')}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
         />
-      </div>
+      </div> */}
 
-      <div className="mb-4">
+      {/* <div className="mb-4">
         <label htmlFor="description" className="block mb-2 font-medium">
           Detail Description
         </label>
@@ -154,18 +164,17 @@ function AddToy() {
           {...register('description')}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
         ></textarea>
-      </div>
+      </div> */}
 
       <button
         type="submit"
         className="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
       >
-        Submit
+        Update
       </button>
     </form>
-   
-    </>
+    </div>
   )
 }
 
-export default AddToy
+export default UpdateToys

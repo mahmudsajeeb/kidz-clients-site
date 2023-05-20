@@ -17,6 +17,25 @@ function MyToys() {
       setMytoys(data)
     })
   },[user])
+
+  const toysDelete  = (id)=>{
+    const confirmDelete = confirm("Are you want to delete?")
+    if(confirmDelete){
+        fetch(`http://localhost:1000/mytoys/${id}`,{
+          method:"DELETE"
+        })
+        .then(res =>res.json())
+        .then(data =>{
+          if (data.deletedCount > 0) {
+            console.log("Successfully deleted one document.");
+            const remaining =mytoys.filter(b => b._id !== id )
+            setMytoys(remaining)
+          } else {
+            console.log("There is Nothing for delete");
+          }
+        })
+    }
+}
   return (
     <div className='max-w-7xl mx-auto'>
 
@@ -39,7 +58,7 @@ function MyToys() {
       
       
     {
-        mytoys.map(mytoy => <MytoysRow   mytoy={mytoy} />)
+        mytoys.map(mytoy => <MytoysRow key={mytoy._id} toysDelete={toysDelete}   mytoy={mytoy} />)
       }
       
     </tbody> 
