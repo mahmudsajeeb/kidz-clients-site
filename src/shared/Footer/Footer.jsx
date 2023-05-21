@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 function Footer() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,  // Animation duration in milliseconds
+      easing: 'ease-in-out',  // Animation easing
+      once: true,  // Whether to trigger animations only once
+    });
+  }, []);
+
   return (
-    <div>
+    <div data-aos="fade-up">
       <footer className="footer p-10 bg-base-200 text-base-content">
   <div>
   <Link to="/" className="btn btn-ghost normal-case font-semibold text-4xl text-orange-600">Kidz </Link>
