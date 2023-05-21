@@ -13,7 +13,7 @@ import Swal from 'sweetalert2'
       const description = form.description.value 
       const updatedToy = {price,availableQuantity,description}
      
-
+      // http://localhost:1000/alltoys
       fetch(`https://toys-murex.vercel.app/alltoys/${toysLoader._id}`,{
         method:"PUT",
         headers:{
