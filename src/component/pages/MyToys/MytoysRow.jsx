@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function MytoysRow({mytoy,updatedToys,toysDelete}) {
+function MytoysRow({mytoy,toysDelete}) {
   const {_id,name, toyName,subCategory,price,availableQuantity} = mytoy
 
   return (

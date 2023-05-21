@@ -1,11 +1,15 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import useTitle from '../../hook/UseTitle';
 
 function Login() {
 useTitle("Login")
   const {user,signIn,signInGoogle} =useContext(AuthContext)
+  const location = useLocation()
+  const navigate = useNavigate()
+  const from = location.state?.from?.pathname || "/";
+
 
  
   const handleLogin =(e)=>{
@@ -19,6 +23,7 @@ useTitle("Login")
     .then(result =>{
       const loginuser = result.user;
       console.log(loginuser)
+      navigate(from ,{replace:true})
       
     }).catch(error =>{
       console.log(error.message)

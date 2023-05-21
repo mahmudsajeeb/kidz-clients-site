@@ -14,7 +14,7 @@ import Swal from 'sweetalert2'
       const updatedToy = {price,availableQuantity,description}
      
 
-      fetch(`http://localhost:1000/alltoys/${toysLoader._id}`,{
+      fetch(`https://toys-murex.vercel.app/alltoys/${toysLoader._id}`,{
         method:"PUT",
         headers:{
           'content-type':'application/json'

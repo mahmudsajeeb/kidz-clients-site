@@ -7,13 +7,13 @@ import { AuthContext } from '../../../providers/AuthProviders';
 
 function AddToy() {
   useTitle("Add Toys")
-  const [selectedOption, setSelectedOption] = useState(null);
+  // const [selectedOption, setSelectedOption] = useState(null);
   const {user} = useContext(AuthContext)
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
-    fetch('http://localhost:1000/allposttoys',{
+    fetch('https://toys-murex.vercel.app/allposttoys',{
       method:"POST",
       headers:{'content-type':'application/json'},
       body:JSON.stringify(data)
@@ -102,8 +102,8 @@ function AddToy() {
         >
           <option value='Musical Toy'>Musical Toy</option>
           <option value="Toy Car">Toy Car</option>
-          <option value="Video Games Toy">Musical Toy</option>
-          
+          <option value="Video Games Toy">Action figures</option>
+         
           {/* Add more options as needed */}
         </select>
  

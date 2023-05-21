@@ -21,9 +21,9 @@ function Footer() {
   <div>
    
     <p className="text-xl">Social Media</p> 
-    <a className="link link-hover">Facebook</a> 
-    <a className="link link-hover">Linkedin</a> 
-    <a className="link link-hover">Twitter</a> 
+    <Link to="https://www.facebook.com/mahmud.ssajib" className="link link-hover">Facebook</Link> 
+    <Link to="https://www.linkedin.com/in/mahmmud-sajib-a262ba166/" className="link link-hover">Linkedin</Link> 
+    <Link to="https://twitter.com/Mahmudseejib"  className="link link-hover">Twitter</Link> 
     
   </div> 
   <div>

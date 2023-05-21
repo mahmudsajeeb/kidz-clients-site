@@ -8,14 +8,14 @@ function AllToys() {
   const [searchText,setSearchText] = useState('')
 
   useEffect(()=>{
-    fetch('http://localhost:1000/alltoys')
+    fetch('https://toys-murex.vercel.app/alltoys')
     .then(res =>res.json())
     .then(data =>setToys(data))
 
   },[])
 
   const handleSearch = () => {
-    fetch(`http://localhost:1000/getToysByText/${searchText}`)
+    fetch(`https://toys-murex.vercel.app/getToysByText/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

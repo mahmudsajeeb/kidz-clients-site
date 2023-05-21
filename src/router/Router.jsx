@@ -8,7 +8,9 @@ import AddToy from "../component/pages/AddToy/AddToy";
 import MyToys from "../component/pages/MyToys/MyToys";
 import AllToys from "../component/pages/All Toys/AllToys";
 import ErrorPage from "../component/ErrorPage";
-import UpdateToys from "../component/pages/MyToys/UpdateToys";
+import UpdateToys from "../component/pages/MyToys/UpdateToys"; 
+import Toys from "../component/pages/ToysDetails/Toys";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +21,7 @@ export const router = createBrowserRouter([
       {
         path:"/",
         element:<Home />
+  
       },
       {
         path:"blog",
@@ -37,9 +40,16 @@ export const router = createBrowserRouter([
         element:<MyToys />
       },
       {
+        path:"toy/:id",
+        element: <PrivateRoute ><Toys /></PrivateRoute> ,
+        loader:({params})=>fetch(`https://toys-murex.vercel.app/alltoys/${params.id}`)
+
+      },
+       
+      {
         path:"updatetoys/:id",
         element:<UpdateToys />,
-        loader:({params})=>fetch(`http://localhost:1000/alltoys/${params.id}`)
+        loader:({params})=>fetch(`https://toys-murex.vercel.app/alltoys/${params.id}`)
        
 
       },
